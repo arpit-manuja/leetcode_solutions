@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<vector<int>> largeGroupPositions(string s) {
+   
+   //make a 2d vector
+        vector<vector<int>> v;
+        
+     //make a 1d vector   
+        vector<int> v1;
+        
+      //run a loop that traverse string s
+      
+        int i=0;
+        while(i<s.length())
+        {
+        
+       // one more loop to check s[i] repeating how many times 
+            int k=1;
+            int j=i;
+            while(s[j]==s[j+1])
+            {
+                k++;
+                j++;
+            }
+        //if repeating 3 or more time push starting and ending index    and dummy vector into main 2d vector and clear dummy vector 
+            if(k>=3)
+                {v1.push_back(i);
+                v1.push_back(j);
+                 v.push_back(v1);
+                 v1.clear();
+            }
+         //if k=1 then increase i+1; else i will be j
+            if(k==1)
+                i++;
+            else
+                i=j;
+            
+        }
+      // return main 2d vector
+      
+        return v;
+    }
+};
